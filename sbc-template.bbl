@@ -1,0 +1,13 @@
+\begin{thebibliography}{}
+
+\bibitem[Shalev-Shwartz and Ben-David 2014]{shalev2014understanding}
+Shalev-Shwartz, S. and Ben-David, S. (2014).
+\newblock {\em Understanding machine learning: From theory to algorithms}.
+\newblock Cambridge university press.
+
+\bibitem[Smola and Vishwanathan 2008]{smola2008introduction}
+Smola, A. and Vishwanathan, S. (2008).
+\newblock Introduction to machine learning.
+\newblock {\em Cambridge University, UK}, 32:34.
+
+\end{thebibliography}

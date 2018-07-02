@@ -1,0 +1,100 @@
+\documentclass[
+% -- opções da classe memoir --
+12pt,				% tamanho da fonte
+openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+twoside,			% para impressão em frente e verso. Oposto a oneside
+a4paper,			% tamanho do papel. 
+% -- opções da classe abntex2 --
+%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+sumario=tradicional, % configura estilo do sumário (comente estilo ABNTEX)
+%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+% -- opções da classe hyperref
+hidelinks,          % oculta caixas e links coloridos
+% -- opção de numerar continuamente as equações
+%continuouseq,      % descomente para numeração contínua
+% -- opção para citações e referências padrão IEEE	
+%IEEE,				% citações e referências IEEE
+% -- opções para citação utilizando classe abnt2cite
+%alf,				% citação alfanumérica
+num,				% citação numérica 
+%overcite,			% citação no modo sobrescrito (se usar notas de rodapé, evite)
+bibjustif,			% alinhamento justificado para as referências
+brackets,			% citações com delimitador []
+% -- opções do pacote babel --
+english,			% idioma adicional para hifenização
+brazil				% o último idioma é o principal do documento
+]{article}       % utfprcopel.cls based on abnt2.cls
+
+
+\usepackage{sbc-template}
+\usepackage{float}
+\usepackage{graphicx,url}
+\usepackage{verbatim}                                       % Permite apresentar texto tal como escrito no documento, ainda que sejam comandos Latex
+\usepackage{amsfonts, amssymb, amsmath}                     % Fontes e símbolos matemáticos
+\usepackage{ae, aecompl}                                    % Fontes de alta qualidade
+\usepackage{latexsym}                                       % Símbolos matemáticos
+\usepackage[algoruled, portuguese]{algorithm2e}             % Permite escrever algoritmos em português
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\renewcommand{\lstlistingname}{Código}% Listing -> Algorithm
+\sloppy
+
+\title{Reconhecimento de Gêneros de Pessoas a partir dos sinais de suas vozes}
+
+\author{Kallil M. Caparroz\inst{1}, Rodrigo C. Anater\inst{2} }
+
+
+\address{Universidade Tecnológica Federal do Paraná - Câmpus Pato Branco
+  \email{kallil@alunos.utfpr.edu.br,
+  rodrigoanater@alunos.utfpr.edu.br}
+}
+
+\begin{document} 
+
+  \selectlanguage{brazil}
+  \maketitle
+
+\begin{abstract} 	
+ 	During the past two decades, the Machine Learning technique has become one of the main studies of information technology. With the increasing amount of information to be analyzed, there is a good reason to develop more and more computational algorythms to analyze these data. The objective of this work is to use different algorithms in the same dataset and compare which one is the best to be used.
+\end{abstract}
+     
+\begin{resumo} 
+ 	Durante as duas últimas décadas, a técnica de Aprendizado de Máquinas tornou-se um dos principais estudos da tecnologia de informação. Com o aumento da quantidade de informações a serem analisadas, há uma boa razão para desenvolver mais e mais algoritmos computacionais a fim de analisar esses dados. O objetivo deste trabalho é usar diferentes algoritmos no mesmo conjunto de dados e comparar qual deles é o melhor a ser usado.   
+\end{resumo}
+
+
+\input{tex/intro.tex}
+\input{tex/regressao.tex}
+\input{tex/svm.tex}
+
+
+
+\bibliographystyle{sbc}
+\bibliography{sbc-template}
+\end{document}
