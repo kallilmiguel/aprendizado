@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.4.18)  2 JUL 2018 18:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.4.18)  4 JUL 2018 17:44
 entering extended mode
 **./sbc-template.tex
 (sbc-template.tex
@@ -807,45 +807,22 @@ File: omsaer.fd 1999/12/27
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 11.
 ) (tex/regressao.tex
-[1
+! I can't write on file `sbc-template.pdf'.
+Please type another file name for output
+! Emergency stop.
+<to be read again> 
+                   \endgroup \set@typeset@protect 
+l.4 
+    
+*** (job aborted, file error in nonstop mode)
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<img/regressao.png, id=12, 230.36063pt x 86.57344pt>
-File: img/regressao.png Graphic file (type png)
- <use img/regressao.png>
-Package pdftex.def Info: img/regressao.png used on input line 9.
-(pdftex.def)             Requested size: 300.0pt x 112.75282pt.
-LaTeX Font Info:    Try loading font information for T1+aess on input line 10.
-
-("C:\Program Files\MiKTeX 2.9.1\tex\latex\ae\t1aess.fd"
-File: t1aess.fd 1997/11/16 Font definitions for T1/aess.
-)
-("C:\Program Files\MiKTeX 2.9.1\tex\latex\listings\lstlang1.sty"
-File: lstlang1.sty 2015/06/04 1.6 listings language file
-) [2 <./img/regressao.png>]) (tex/svm.tex) (sbc-template.bbl) [3] (sbc-template
-.aux) ) 
+ 
 Here is how much of TeX's memory you used:
- 8216 strings out of 493323
- 109824 string characters out of 3138204
- 245439 words of memory out of 3000000
- 11524 multiletter control sequences out of 15000+200000
- 40006 words of font info for 81 fonts, out of 3000000 for 9000
+ 7636 strings out of 493323
+ 104061 string characters out of 3138204
+ 218880 words of memory out of 3000000
+ 10995 multiletter control sequences out of 15000+200000
+ 23011 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,8n,49p,471b,1823s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9.1/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-><C:/Program Files/MiKTeX 2.9.1/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:
-/Program Files/MiKTeX 2.9.1/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Progr
-am Files/MiKTeX 2.9.1/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program File
-s/MiKTeX 2.9.1/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTe
-X 2.9.1/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9.1/
-fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9.1/fonts/ty
-pe1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9.1/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9.1/fonts/type1/public
-/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9.1/fonts/type1/public/amsfo
-nts/cm/cmtt10.pfb>
-Output written on sbc-template.pdf (3 pages, 149952 bytes).
-PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+ 39i,8n,49p,471b,304s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

@@ -1,2 +1,69 @@
 \section{SVM}
 
+Máquinas de vetores suporte, ou SVM (do inglês, \emph{Support Vector Machines}) é um método de aprendizado de máquina supervisionado, binário e não probabilístico, que se baseia na criação de um hiperplano ótimo para a divisão entre classes. A criação do plano se baseia não em todos os elementos, mas sim em um grupo especifico, os chamados "vetores suporte", de onde vem o nome do método. Esse vetores suporte são os de mais difícil classificação, uma vez que se encontram mais próximos dos elementos do outro grupo.
+
+O SVM, quando linear, funciona de maneira semelhante a outros métodos que se utilizam da criação de uma superfície de decisão, porem, tem a capacidade de se adaptar para a classificação de dados não linearmente separáveis através do truque de kernel, que permite o aumento da dimensionalidade dos dados, de forma à possibilitar a separação dos mesmos.
+
+Por sua natureza, o método SVM mantem uma boa funcionalidade em espaços com grande número de dimensões, inclusive quando esse número é superior ao número de elementos. Dispões também de versatilidade, se adaptando à diferentes distribuições através da escolha do kernel. A principal desvantagem está na grande complexidade do método, tanto computacional, podendo exigir uma grande quantidade de processamento para a criação do hiperplano de separação, quanto teórica, apresentando um grande desafio na abstração matemática de seu funcionamento, uma vez que pode funcionar em um alto números de dimensões.
+
+Para a utilização prática do SVM, o primeiro parâmetro a ser analisado é o \textbf{C}, referente às chamadas \emph{slack variables}, que permitem que a superfície de decisão treinada aceite erros no treino em troca de uma maior simplicidade na superfície de decisão. O valor base de \textbf{C} é 1, valores menores criam uma superfície mais simples, enquanto valores maiores buscam uma classificação mais exata, aceitando um maior numero de vetores suporte, porem com o risco de causar um \emph{overfitting} do modelo.
+
+Em seguida, deve-se escolher o kernel. Em um conjunto de dados linearmente separável, pode ser utilizado o SVM linear, ou seja, sem a utilização de um kernel. Porém, em muitos casos, os dados não são tão bem comportados, e é necessária a aplicação do truque de kernel. O truque se baseia na aplicação de uma operação vetorial sobre os elementos, de forma que o conjunto ocupe um maior número de dimensões, onde este possa ser separado. Para distribuições discretas, é possível até mesmo a adição de uma dimensão para cada elemento, de forma a garantir a separabilidade do conjunto. Já em dados que seguem uma distribuição continua, como é o caso, é realizado um produto interno
+.
+As escolhas mais comuns de kernel são a função de base radial (RBF), polinomial e sigmoide. O kernel RBF aplica uma transformação na forma de uma curva normal sobre os dados, que normalmente permite uma melhor separação de dados provenientes de medições reais, como é o caso. O kernel polinomial aplica um polinômio de ordem N, que define o formato da curva. O kernel sigmoidal aplica uma sigmoide, sendo recomendada para alguns casos específicos onde os dados seguem uma certa distribuição probabilística. Em geral, é sugerido o teste de diferentes kerneis, começando pelo RBF, devido à sua menor complexidade computacional.
+
+Uma vez escolhido um kernel, surge um terceiro parâmetro de grande importância, o \textbf{gamma}, referente ao coeficiente da função do kernel. Uma forma de se avaliar a ação do \textbf{gamma} é como um parâmetro que define a área de influencia de cada vetores suporte, de forma inversa ao seu valor. Valores altos de \textbf{gamma} reduzem a influencia dos vetores suporte, causando um \emph{overfitting} do modelo, enquanto valores pequenos podem causar uma restrição excessiva do modelo, de forma que não consiga acompanhar o comportamento dos dados. O valor padrão de \textbf{gamma} pelo scikit learn é o inverso do numero de característica, de forma à balancear a influencia.
+
+Para o problema analisado, os melhores resultados foram obtidos com a utilização do kernel RBF, como é de se esperar, uma vez que os dados devem seguir uma distribuição normal, pois foram extraídos de uma situação real. Para o valor de C, o resultado apenas sofreu com escolhas muito baixas ou extremas, sendo que o valor padrão de um resultou no melhor resultado. Finalmente, para o gamma, o valor de 0.05, referente às 20 características também resultou no melhor caso analisado. Com esses parâmetros, foi obtida uma precisão de 98\% de acertos.
+
+
+\begin{lstlisting}[language = python, numbers = left, ,backgroundcolor = \color{yellow!20}]
+
+# Importing the libraries
+import numpy as np
+import pandas as pd
+
+# Lista de Parametros
+RATIO_TESTE_TREINO = 0.3
+rs = 13#np.random.randint(0,100)
+
+
+#Importando a base de dados
+dataset = pd.read_csv('voice.csv')
+X = dataset.iloc[:, :-1].values
+y = dataset.iloc[:, 20].values
+
+#  Transformando as labels em numeros
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelencoder_y = LabelEncoder()
+y = labelencoder_y.fit_transform(y)
+onehotencoder = OneHotEncoder(categorical_features = [0])
+y = onehotencoder.fit_transform(y).toarray()
+y = np.transpose(y)
+
+# Dividindo a base de dados em treinamento e tes
+from sklearn.cross_validation import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=RATIO_TESTE_TREINO, stratify=y)
+
+# Normalizacao:
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+sc.fit(X_train)
+X_train_std = sc.transform(X_train)
+X_test_std = sc.transform(X_test)
+
+
+#%% SVM
+from sklearn import svm
+
+mvs = svm.SVC(C=1, kernel='rbf', gamma=0.05)
+
+mvs.fit(X_train_std, y_train)
+y_pred = mvs.predict(X_test_std)
+
+from sklearn.metrics import accuracy_score
+print('Accuracy SVM: %.2f\n' % accuracy_score(y_test, y_pred))
+
+
+
+\end{lstlisting}
